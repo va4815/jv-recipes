@@ -34,4 +34,13 @@ public class Database {
         return sessionFactory;
     }
 
+    static void seed(){
+        var sessionFactory = getSessionFactory();
+
+        sessionFactory.inTransaction(session -> {
+            session.persist(new User("me@emails.com", "pw123", "UN1232", "ADMIN", "11/23/2001"));
+            session.persist(new Category(2, "category1"));
+        });
+    }
+
 }
