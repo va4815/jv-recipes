@@ -1,20 +1,12 @@
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "users")
 public class User {
 
-    public User(Integer id, String email, String password, String username, String roles, String dateRegistered) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.username = username;
-        this.roles = roles;
-        this.dateRegistered = dateRegistered;
-    }
-
     @Id
-    private Integer id;
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Integer userId;
 
     @Column
     private String username;
@@ -32,6 +24,14 @@ public class User {
     @Column
     private String dateRegistered;
 
+    public User(String email, String password, String username, String roles, String dateRegistered) {
+        this.email = email;
+        this.password = password;
+        this.username = username;
+        this.roles = roles;
+        this.dateRegistered = dateRegistered;
+    }
+
     public String getDateRegistered() {
         return dateRegistered;
     }
@@ -48,12 +48,12 @@ public class User {
         this.email = email;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getPassword() {

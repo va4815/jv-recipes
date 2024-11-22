@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 @Table
 public class Recipe {
 
-    public Recipe(Integer id, String title, String cookingTime, User creator, String dateCreated, String description, Integer difficultyLevel, String instructions, String lastModified, String listOfCategories, String listOfIngredients, String preparationTime, Integer rating, Integer servings) {
-        this.id = id;
+    public Recipe(String title, String cookingTime, User creator, String dateCreated, String description, Integer difficultyLevel, String instructions, String lastModified, String listOfCategories, String listOfIngredients, String preparationTime, Integer rating, Integer servings) {
         this.title = title;
         this.cookingTime = cookingTime;
         this.creator = creator;
@@ -22,7 +21,8 @@ public class Recipe {
     }
 
     @Id
-    private Integer id;
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Integer recipeId;
 
     @Column
     private String title;
@@ -55,7 +55,7 @@ public class Recipe {
     private String listOfCategories;
 
     @ManyToOne (cascade = CascadeType.ALL)
-    @JoinColumn (name = "id", insertable=false, updatable=false)
+    @JoinColumn (name = "user_id")
     private User creator;
 
     @Column
@@ -104,12 +104,12 @@ public class Recipe {
         this.difficultyLevel = difficultyLevel;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getRecipeId() {
+        return recipeId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setRecipeId(Integer recipeId) {
+        this.recipeId = recipeId;
     }
 
     public String getInstructions() {
@@ -180,7 +180,7 @@ public class Recipe {
     public String toString() {
         return "Recipe{" +
                 "cookingTime='" + cookingTime + '\'' +
-                ", id=" + id +
+                ", recipeId=" + recipeId +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", instructions='" + instructions + '\'' +

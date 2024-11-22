@@ -23,16 +23,20 @@ public class Main {
         Transaction transaction = session.beginTransaction();
 
         // insertion
-        Category category = new Category(1, "category1");
+        Category category = new Category(2, "category1");
 
-        User user1 = new User(1, "me@emails.com", "pw123", "UN1232", "ADMIN", "11/23/2001");
+        User user1 = new User("me@emails.com", "pw123", "UN1232", "ADMIN", "11/23/2001");
 
-        Recipe recipe = new Recipe(1, "random title", "22mins", user1, "1/1/1", "desciptietopajta", 4, "step 1/....", "22/22/22", "whatevers", "apples....", "11:11...", 5, 4 );
-        session.persist(recipe);
+        Recipe recipe = new Recipe("random title", "22mins", user1, "1/1/1", "desciptietopajta", 4, "step 1/....", "22/22/22", "whatevers", "apples....", "11:11...", 5, 4 );
+
+        Comment comment = new Comment("nice", "22/11/2024", user1, "associatedRecipe1");
+        Tag tag = new Tag("#ddd");
+
+        session.persist(comment);
 
         // query
-        var c = session.find(Recipe.class, 1);
-        System.out.println(c.getDescription());
+        var c = session.find(Comment.class, 1);
+        System.out.println(c);
 
 
         // commit
