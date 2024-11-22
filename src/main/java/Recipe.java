@@ -55,7 +55,7 @@ public class Recipe {
     private String listOfCategories;
 
     @ManyToOne (cascade = CascadeType.ALL)
-    @JoinColumn (name = "user_id")
+    @JoinColumn (name = "userId")
     private User creator;
 
     @Column

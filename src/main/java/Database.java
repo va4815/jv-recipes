@@ -24,6 +24,8 @@ public class Database {
                 .addAnnotatedClass(Ingredient.class)
                 .addAnnotatedClass(Comment.class)
                 .addAnnotatedClass(Tag.class)
+                .addAnnotatedClass(Image.class)
+                .addAnnotatedClass(Rating.class)
 
 
                 .buildSessionFactory();
