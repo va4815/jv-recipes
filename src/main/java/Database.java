@@ -19,6 +19,11 @@ public class Database {
                 .setProperty("hibernate.hikari.maximumPoolSize", "20")
 
                 .addAnnotatedClass(Category.class)
+                .addAnnotatedClass(User.class)
+                .addAnnotatedClass(Recipe.class)
+                .addAnnotatedClass(Ingredient.class)
+
+
 
                 .buildSessionFactory();
 

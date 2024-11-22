@@ -24,11 +24,16 @@ public class Main {
 
         // insertion
         Category category = new Category(1, "category1");
-        session.persist(category);
+
+        User user1 = new User(1, "me@emails.com", "pw123", "UN1232", "ADMIN", "11/23/2001");
+
+        Recipe recipe = new Recipe(1, "random title", "22mins", user1, "1/1/1", "desciptietopajta", 4, "step 1/....", "22/22/22", "whatevers", "apples....", "11:11...", 5, 4 );
+        session.persist(recipe);
 
         // query
-        var c = session.find(Category.class, 1);
-        System.out.println(c.getName());
+        var c = session.find(Recipe.class, 1);
+        System.out.println(c.getDescription());
+
 
         // commit
         transaction.commit();
