@@ -15,7 +15,13 @@ public class Database {
                 .setProperty(SHOW_SQL, TRUE.toString()) // <-- SQL formatting configuration
                 .setProperty(FORMAT_SQL, TRUE.toString())
                 .setProperty(HIGHLIGHT_SQL, TRUE.toString())
+                .setProperty(POOL_SIZE, 1)
+                .setProperty("hibernate.hikari.maximumPoolSize", "20")
+
+                .addAnnotatedClass(Category.class)
+
                 .buildSessionFactory();
+
 
         return sessionFactory;
     }
